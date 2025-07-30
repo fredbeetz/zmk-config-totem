@@ -11,7 +11,9 @@
 // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
 #define NAV  1
@@ -66,7 +68,7 @@
 
         // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 
-        base_layer {
+        Colemak_BaseLayer {
             // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 
             label = "BASE";
@@ -83,10 +85,83 @@
             //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
 
             bindings = <
-       &kp Q       &kp W       &kp F        &kp P        &kp B        &kp J      &kp L        &kp U        &kp Y       &kp APOS
-       &mt LGUI A  &mt LALT R  &mt LCTRL S  &mt LSHFT T  &kp G        &kp M      &mt RSHFT N  &mt RCTRL E  &mt RALT I  &mt RGUI O
-&kp Q  &kp Z       &kp X       &kp C        &kp D        &kp V        &kp K      &kp H        &kp COMMA    &kp DOT     &kp FSLH    &kp BSLH
+        &kp Q       &kp W       &kp F        &kp P        &kp B        &kp J      &kp L        &kp U        &kp Y       &kp APOS
+        &mt LGUI A  &mt LALT R  &mt LCTRL S  &mt LSHFT T  &kp G        &kp M      &mt RSHFT N  &mt RCTRL E  &mt RALT I  &mt RGUI O
+&trans  &kp Z       &kp X       &kp C        &kp D        &kp V        &kp K      &kp H        &kp COMMA    &kp DOT     &kp FSLH    &kp BSLH
+                                &lt 5 ESC    &lt 6 SPACE  &lt 7 TAB    &lt 2 RET  &lt 3 BSPC   &lt 4 DEL
+            >;
+        };
+
+        QWERTY_BaseLayer {
+            label = "BASE2";
+            bindings = <
+       &kp Q       &kp W       &kp E        &kp R        &kp T        &kp Y      &kp U        &kp I        &kp O       &kp P
+       &mt LGUI A  &mt LALT S  &mt LCTRL D  &mt LSHFT F  &kp G        &kp H      &mt RSHFT J  &mt RCTRL K  &mt RALT L  &mt RGUI SEMICOLON
+&kp Q  &kp Z       &kp X       &kp C        &kp V        &kp B        &kp N      &kp M        &kp COMMA    &kp DOT     &kp FSLH            &kp BSLH
                                &kp ESC      &lt 0 SPACE  &lt 0 TAB    &lt 0 RET  &lt 0 BSPC   &lt 0 DEL
+            >;
+        };
+
+        Sym {
+            bindings = <
+        &kp LBRC   &kp AMPS  &kp ASTRK             &kp LPAR               &kp RBRC          &trans  &trans  &trans  &trans  &trans
+        &kp COLON  &kp DLLR  &kp PRCNT             &kp CARET              &kp PLUS          &trans  &trans  &trans  &trans  &trans
+&trans  &kp TILDE  &kp EXCL  &kp AT_SIGN           &kp HASH               &kp PIPE          &trans  &trans  &trans  &trans  &trans  &trans
+                             &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UNDERSCORE    &trans  &trans  &trans
+            >;
+        };
+
+        Num {
+            bindings = <
+        &kp LBKT   &kp N7  &kp N8   &kp N9  &kp RBKT     &trans  &trans  &trans  &trans  &trans
+        &kp SEMI   &kp N4  &kp N5   &kp N6  &kp EQUAL    &trans  &trans  &trans  &trans  &trans
+&trans  &kp GRAVE  &kp N1  &kp N2   &kp N3  &kp BSLH     &trans  &trans  &trans  &trans  &trans  &trans
+                           &kp DOT  &kp N0  &kp MINUS    &trans  &trans  &trans
+            >;
+        };
+
+        Func {
+            bindings = <
+        &kp F12  &kp F7  &kp F8  &kp F9     &kp PSCRN          &trans  &trans  &trans  &trans  &trans
+        &kp F11  &kp F4  &kp F5  &kp F6     &kp SLCK           &trans  &trans  &trans  &trans  &trans
+&trans  &kp F10  &kp F1  &kp F2  &kp F3     &kp PAUSE_BREAK    &trans  &trans  &trans  &trans  &trans  &trans
+                         &mo 8   &kp SPACE  &kp TAB            &trans  &trans  &trans
+            >;
+        };
+
+        Media {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &trans        &kp C_BRI_DN  &kp C_BRI_UP  &trans        &trans
+        &trans  &trans  &trans  &trans  &trans    &kp C_PREV    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT    &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
+                        &trans  &trans  &trans    &kp C_STOP    &kp C_PP      &kp K_MUTE
+            >;
+        };
+
+        Nav {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &kp K_REDO  &kp K_PASTE  &kp K_COPY  &kp K_CUT  &kp K_UNDO
+        &trans  &trans  &trans  &trans  &trans    &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT  &kp CAPS
+&trans  &trans  &trans  &trans  &trans  &trans    &kp HOME    &kp PG_DN    &kp PG_UP   &kp END    &kp INS     &trans
+                        &trans  &trans  &trans    &trans      &trans       &trans
+            >;
+        };
+
+        Mouse {
+            bindings = <
+        &trans  &trans  &trans  &trans  &trans    &kp K_REDO      &kp K_PASTE     &kp K_COPY    &kp K_CUT        &kp K_UNDO
+        &trans  &trans  &trans  &trans  &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &mkp MB4
+&trans  &trans  &trans  &trans  &trans  &trans    &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &mkp MB5    &trans
+                        &trans  &trans  &trans    &mkp MB2        &mkp MB1        &mkp MB3
+            >;
+        };
+
+        Adjust {
+            bindings = <
+        &bootloader     &trans  &tog 0  &tog 1  &trans    &trans  &tog 1  &tog 0  &trans  &bootloader
+        &trans          &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &bt BT_CLR_ALL  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &bt BT_CLR_ALL  &trans
+                                &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
 
